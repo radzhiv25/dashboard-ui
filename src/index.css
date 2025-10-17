@@ -1,68 +1,62 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+/* Mobile-specific styles */
+@layer utilities {
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+  /* Prevent body scroll when mobile sidebar is open */
+  .no-scroll {
+    overflow: hidden;
   }
-  a:hover {
-    color: #747bff;
+
+  /* Smooth transitions for mobile interactions */
+  .mobile-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  button {
-    background-color: #f9f9f9;
+
+  /* Mobile sidebar slide animations */
+  .mobile-slide-left {
+    transform: translateX(-100%);
+  }
+
+  .mobile-slide-right {
+    transform: translateX(100%);
+  }
+
+  /* Mobile overlay backdrop */
+  .mobile-overlay {
+    backdrop-filter: blur(4px);
+  }
+}
+
+/* Mobile-specific component styles */
+@layer components {
+
+  /* Mobile search modal */
+  .mobile-search-modal {
+    @apply fixed inset-0 z-50 bg-black/50 flex items-start justify-center pt-20 px-4;
+  }
+
+  .mobile-search-content {
+    @apply w-full max-w-md bg-white dark:bg-black/90 rounded-lg shadow-xl;
+  }
+
+  /* Mobile sidebar styles */
+  .mobile-sidebar {
+    @apply fixed top-0 z-50 h-screen overflow-hidden;
+  }
+
+  .mobile-sidebar-left {
+    @apply left-0;
+  }
+
+  .mobile-sidebar-right {
+    @apply right-0;
+  }
+
+  /* Mobile navbar adjustments */
+  .mobile-navbar {
+    @apply px-4 md:px-7;
   }
 }
