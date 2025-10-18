@@ -1,6 +1,6 @@
 import { ClockCounterClockwise, Sidebar, Star, Sun, Bell, MagnifyingGlass, Command, Moon, X } from '@phosphor-icons/react'
 import { useSidebar } from '../../hooks/useSidebar'
-import { useTheme } from '../../context/ThemeContext'
+import { useTheme } from '../../context/theme-context'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 

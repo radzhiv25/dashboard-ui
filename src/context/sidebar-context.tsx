@@ -18,14 +18,23 @@ export function SidebarProvider({ children }: { children: ReactNode }) {
 
     useEffect(() => {
         const checkMobile = () => {
-            setIsMobile(window.innerWidth < 768)
+            const wasMobile = isMobile
+            const nowMobile = window.innerWidth < 768
+
+            setIsMobile(nowMobile)
+
+            // If switching from desktop to mobile, close all sidebars
+            if (!wasMobile && nowMobile) {
+                setLeftSidebarCollapsed(true)
+                setRightSidebarCollapsed(true)
+            }
         }
 
         checkMobile()
         window.addEventListener('resize', checkMobile)
 
         return () => window.removeEventListener('resize', checkMobile)
-    }, [])
+    }, [isMobile])
 
     // Prevent body scroll when mobile sidebar is open
     useEffect(() => {
