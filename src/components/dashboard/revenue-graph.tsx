@@ -1,4 +1,4 @@
-import { LineChart, Line, Area, ResponsiveContainer, Tooltip, Legend } from 'recharts';
+import { LineChart, Line, Area, ResponsiveContainer, Tooltip } from 'recharts';
 import { RevenueGraphData } from '../../data/revenue-graph-data';
 import { GraphXAxis } from '../graph/x-axis';
 import { GraphYAxis } from '../graph/y-axis';
@@ -54,45 +54,6 @@ const graphChild = ({ theme }: { theme: string }) => {
         return null;
     };
 
-    // Custom line component that handles solid-to-dashed transition
-    const CustomCurrentWeekLine = (props: any) => {
-        const { points } = props;
-        if (!points || points.length === 0) return null;
-
-        // Create path for solid line (Jan-Apr)
-        const solidPoints = points.slice(0, 4); // First 4 points (Jan-Apr)
-        const solidPath = solidPoints.reduce((path: string, point: any, index: number) => {
-            if (index === 0) return `M ${point.x} ${point.y}`;
-            return `${path} L ${point.x} ${point.y}`;
-        }, '');
-
-        // Create path for dashed line (May-Jun)
-        const dashedPoints = points.slice(3); // From Apr to Jun (overlapping Apr for connection)
-        const dashedPath = dashedPoints.reduce((path: string, point: any, index: number) => {
-            if (index === 0) return `M ${point.x} ${point.y}`;
-            return `${path} L ${point.x} ${point.y}`;
-        }, '');
-
-        return (
-            <g>
-                {/* Solid line */}
-                <path
-                    d={solidPath}
-                    stroke="#000000"
-                    strokeWidth={2}
-                    fill="none"
-                />
-                {/* Dashed line */}
-                <path
-                    d={dashedPath}
-                    stroke="#000000"
-                    strokeWidth={2}
-                    strokeDasharray="5 5"
-                    fill="none"
-                />
-            </g>
-        );
-    };
 
 
     return (
@@ -125,7 +86,6 @@ const graphChild = ({ theme }: { theme: string }) => {
                         dot={false}
                         activeDot={{ r: 4, fill: '#000000' }}
                         name="Current Week"
-                        shape={CustomCurrentWeekLine}
                     />
                     <Line
                         type="monotone"
