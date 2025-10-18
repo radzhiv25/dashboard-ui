@@ -152,57 +152,60 @@ export default function OrderList() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700"
+            className="bg-white dark:bg-gray-900"
         >
             {/* Header */}
-            <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-                <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Order List</h2>
-                    <div className="flex items-center gap-3">
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="p-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
-                        >
-                            <Plus size={20} />
-                        </motion.button>
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                        >
-                            <FunnelSimple size={20} />
-                        </motion.button>
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                        >
-                            <SortAscending size={20} />
-                        </motion.button>
+            <div className=" border-gray-200 dark:border-gray-700">
+                    <h2 className="text-sm font-semibold px-4 pb-4 text-gray-900 dark:text-white">Order List</h2>
+                <div className="bg-[#F7F9FB] flex items-center justify-between mb-4 p-2 rounded-lg">
+                    <div className="">
+                        <div className="flex items-center gap-3">
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="p-2 rounded-lg text-black hover:bg-black/5 transition-colors"
+                            >
+                                <Plus size={20} />
+                            </motion.button>
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="p-2 rounded-lg text-black hover:bg-black/5 transition-colors"
+                            >
+                                <FunnelSimple size={20} />
+                            </motion.button>
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="p-2 rounded-lg text-black hover:bg-black/5 transition-colors"
+                            >
+                                <SortAscending size={20} />
+                            </motion.button>
+                        </div>
+
+                    </div>
+                    {/* Search Bar */}
+                    <div className="relative">
+                        <MagnifyingGlass
+                            size={20}
+                            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                        />
+                        <input
+                            type="text"
+                            placeholder="Search"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="w-40 pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white/40 dark:bg-gray-800 text-gray-900 dark:text-white placeholder-black/40 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        />
                     </div>
                 </div>
 
-                {/* Search Bar */}
-                <div className="relative">
-                    <MagnifyingGlass
-                        size={20}
-                        className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                    />
-                    <input
-                        type="text"
-                        placeholder="Search"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
-                </div>
             </div>
 
             {/* Table */}
             <div className="overflow-x-auto">
                 <table className="w-full">
-                    <thead className="bg-gray-50 dark:bg-gray-800">
+                    <thead className="border-b">
                         <tr>
                             <th className="px-6 py-3 text-left">
                                 <input
@@ -310,7 +313,7 @@ export default function OrderList() {
                             whileTap={{ scale: 0.95 }}
                             onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                             disabled={currentPage === 1}
-                            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            className="size-8 flex items-center justify-center p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                         >
                             <span className="text-sm">‹</span>
                         </motion.button>
@@ -322,8 +325,8 @@ export default function OrderList() {
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => handlePageChange(page)}
                                 className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${currentPage === page
-                                        ? 'bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white'
-                                        : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                                    ? 'bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white'
+                                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
                                     }`}
                             >
                                 {page}
@@ -335,7 +338,7 @@ export default function OrderList() {
                             whileTap={{ scale: 0.95 }}
                             onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
                             disabled={currentPage === totalPages}
-                            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            className="size-8 flex items-center justify-center p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                         >
                             <span className="text-sm">›</span>
                         </motion.button>
@@ -345,3 +348,4 @@ export default function OrderList() {
         </motion.div>
     )
 }
+

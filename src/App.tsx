@@ -12,22 +12,22 @@ function App() {
     <ThemeProvider>
       <SidebarProvider>
         <DashboardProvider>
-          <div className="flex bg-white dark:bg-black/90 min-h-screen relative">
+          <div className="flex bg-white dark:bg-black/90 h-screen relative">
             {/* Desktop: sidebars are part of the flex layout */}
-            <div className="hidden md:block">
+            <div className="hidden md:block h-full">
               <LeftSidebar />
             </div>
 
             {/* Main content area */}
-            <div className="w-full h-screen flex-1">
+            <div className="w-full h-full flex-1 flex flex-col">
               <Navbar />
-              <div className="p-4">
+              <div className="flex-1 overflow-y-auto p-4">
                 <Dashboard />
               </div>
             </div>
 
             {/* Desktop: right sidebar */}
-            <div className="hidden md:block">
+            <div className="hidden md:block h-full">
               <RightSidebar />
             </div>
 

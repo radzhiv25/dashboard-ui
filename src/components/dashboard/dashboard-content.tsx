@@ -13,7 +13,6 @@ export default function Dashboard() {
     if (selectedDashboard === 'Order List') {
         return (
             <div className="md:p-5 p-3">
-                <h2 className="text-sm pb-5 font-semibold text-black dark:text-white">Order Management</h2>
                 <div className="w-full">
                     <OrderList />
                 </div>

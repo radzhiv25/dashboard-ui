@@ -62,7 +62,7 @@ const graphChild = ({ theme }: { theme: string }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
         >
-            <ResponsiveContainer width="100%" height={200} className="sm:min-h-[200px]">
+            <ResponsiveContainer width="100%" height="100%" className="sm:min-h-[400px]">
                 <LineChart data={RevenueGraphData}>
                     <GraphCartesianGrid />
                     <GraphXAxis dataKeyName="month" />

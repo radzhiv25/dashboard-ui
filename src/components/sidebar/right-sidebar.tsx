@@ -64,6 +64,40 @@ export default function RightSidebar() {
         }
     ]
 
+    // Sample data for contacts
+    const contacts = [
+        {
+            name: "Natali Craig",
+            avatar: "👩",
+            bg: "bg-gray-100"
+        },
+        {
+            name: "Drew Cano",
+            avatar: "👨",
+            bg: "bg-red-100"
+        },
+        {
+            name: "Orlando Diggs",
+            avatar: "👨",
+            bg: "bg-yellow-100"
+        },
+        {
+            name: "Andi Lane",
+            avatar: "👩",
+            bg: "bg-blue-100"
+        },
+        {
+            name: "Kate Morrison",
+            avatar: "👩",
+            bg: "bg-green-100"
+        },
+        {
+            name: "Koray Okumus",
+            avatar: "👨",
+            bg: "bg-purple-100"
+        }
+    ]
+
     // Animation variants
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -150,8 +184,12 @@ export default function RightSidebar() {
             )}
 
             <motion.div
-                className={`border-l border-black/10 dark:border-white/10 bg-white dark:bg-black/90 h-screen overflow-hidden ${isMobile ? 'fixed right-0 top-0 z-50' : 'relative'
+                className={`border-l border-black/10 dark:border-white/10 bg-white dark:bg-black/90 ${isMobile ? 'fixed right-0 top-0 z-50 h-screen' : 'relative h-full'
                     }`}
+                initial={{
+                    width: rightSidebarCollapsed ? 0 : (isMobile ? window.innerWidth * 0.8 : 288),
+                    opacity: rightSidebarCollapsed ? 0 : 1,
+                }}
                 animate={{
                     width: rightSidebarCollapsed ? 0 : (isMobile ? window.innerWidth * 0.8 : 288),
                     opacity: rightSidebarCollapsed ? 0 : 1,
@@ -160,9 +198,8 @@ export default function RightSidebar() {
                     duration: 0.3,
                     ease: "easeInOut"
                 }}
-                initial={false}
             >
-                <div className={`h-screen overflow-y-auto ${isMobile ? 'w-full' : 'w-72'}`}>
+                <div className={`h-full overflow-y-auto ${isMobile ? 'w-full' : 'w-72'}`}>
                     <AnimatePresence>
                         {isLoaded && (
                             <motion.div
@@ -304,6 +341,58 @@ export default function RightSidebar() {
                                                 </motion.div>
                                             ))}
                                         </div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Contacts Section */}
+                                <motion.div
+                                    variants={sectionVariants}
+                                    transition={{ duration: 0.5, ease: "easeOut" }}
+                                >
+                                    <motion.h3
+                                        className="text-lg font-bold text-black dark:text-white mb-4"
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ duration: 0.5, delay: 0.6 }}
+                                    >
+                                        Contacts
+                                    </motion.h3>
+                                    <div className="space-y-3">
+                                        {contacts.map((contact, index) => (
+                                            <motion.div
+                                                key={index}
+                                                className="flex items-center gap-3"
+                                                variants={itemVariants}
+                                                whileHover="hover"
+                                                whileTap="tap"
+                                                transition={{ duration: 0.4, ease: "easeOut" }}
+                                            >
+                                                <motion.div
+                                                    className={`w-10 h-10 ${contact.bg} dark:bg-gray-700 rounded-full flex items-center justify-center text-sm font-medium shadow-sm border-2 border-white dark:border-gray-800`}
+                                                    initial={{ scale: 0, rotate: -180 }}
+                                                    animate={{ scale: 1, rotate: 0 }}
+                                                    transition={{
+                                                        duration: 0.5,
+                                                        delay: 0.7 + index * 0.1,
+                                                        ease: "backOut"
+                                                    }}
+                                                    whileHover={{
+                                                        scale: 1.05,
+                                                        transition: { duration: 0.2 }
+                                                    }}
+                                                >
+                                                    {contact.avatar}
+                                                </motion.div>
+                                                <motion.p
+                                                    className="text-sm text-gray-900 dark:text-white font-medium"
+                                                    initial={{ opacity: 0, x: 10 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ delay: 0.8 + index * 0.1 }}
+                                                >
+                                                    {contact.name}
+                                                </motion.p>
+                                            </motion.div>
+                                        ))}
                                     </div>
                                 </motion.div>
 
