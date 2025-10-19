@@ -1,12 +1,14 @@
 import { ClockCounterClockwise, Sidebar, Star, Sun, Bell, MagnifyingGlass, Command, Moon, X } from '@phosphor-icons/react'
 import { useSidebar } from '../../hooks/useSidebar'
 import { useTheme } from '../../context/theme-context'
+import { useDashboard } from '../../context/dashboard-context'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Navbar() {
     const { leftSidebarCollapsed, rightSidebarCollapsed, isMobile, toggleLeftSidebar, toggleRightSidebar } = useSidebar()
     const { theme, toggleTheme } = useTheme()
+    const { selectedDashboard, setSelectedDashboard } = useDashboard()
     const [isSearchOpen, setIsSearchOpen] = useState(false)
     return (
         <>
@@ -27,7 +29,15 @@ export default function Navbar() {
                     <div className="hidden md:flex items-center gap-2">
                         <p className="text-sm text-black/40 dark:text-white/40">Dashboards</p>
                         <p className="text-sm text-black/40 dark:text-white/40">/</p>
-                        <p className="text-sm text-black dark:text-white">Default</p>
+                        <motion.button
+                            onClick={() => setSelectedDashboard(selectedDashboard === 'Default' ? 'Order List' : 'Default')}
+                            className="text-sm text-black dark:text-white hover:text-black/70 dark:hover:text-white/70 transition-colors"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            transition={{ duration: 0.1 }}
+                        >
+                            {selectedDashboard}
+                        </motion.button>
                     </div>
                 </div>
 

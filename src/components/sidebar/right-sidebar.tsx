@@ -215,7 +215,7 @@ export default function RightSidebar() {
                                     transition={{ duration: 0.5, ease: "easeOut" }}
                                 >
                                     <motion.h3
-                                        className="text-lg font-semibold text-black dark:text-white mb-4"
+                                        className="text-sm font-semibold text-black dark:text-white mb-4"
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ duration: 0.5, delay: 0.2 }}
@@ -268,7 +268,7 @@ export default function RightSidebar() {
                                     transition={{ duration: 0.5, ease: "easeOut" }}
                                 >
                                     <motion.h3
-                                        className="text-lg font-bold text-black dark:text-white mb-6"
+                                        className="text0sm font-bold text-black dark:text-white mb-6"
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ duration: 0.5, delay: 0.4 }}
@@ -350,7 +350,7 @@ export default function RightSidebar() {
                                     transition={{ duration: 0.5, ease: "easeOut" }}
                                 >
                                     <motion.h3
-                                        className="text-lg font-bold text-black dark:text-white mb-4"
+                                        className="text-sm font-bold text-black dark:text-white mb-4"
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ duration: 0.5, delay: 0.6 }}

@@ -156,7 +156,7 @@ export default function OrderList() {
         >
             {/* Header */}
             <div className=" border-gray-200 dark:border-gray-700">
-                    <h2 className="text-sm font-semibold px-4 pb-4 text-gray-900 dark:text-white">Order List</h2>
+                <h2 className="text-sm font-semibold px-4 pb-4 text-gray-900 dark:text-white">Order List</h2>
                 <div className="bg-[#F7F9FB] flex items-center justify-between mb-4 p-2 rounded-lg">
                     <div className="">
                         <div className="flex items-center gap-3">
