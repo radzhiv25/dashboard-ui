@@ -10,6 +10,7 @@ export default function Navbar() {
     const { theme, toggleTheme } = useTheme()
     const { selectedDashboard, setSelectedDashboard } = useDashboard()
     const [isSearchOpen, setIsSearchOpen] = useState(false)
+    const [isStarSelected, setIsStarSelected] = useState(false)
     return (
         <>
             <div className="border-b border-black/10 dark:border-white/10 bg-white dark:bg-black/10 w-full h-16 px-4 md:px-7 py-5 flex items-center justify-between">
@@ -23,7 +24,53 @@ export default function Navbar() {
                         >
                             <Sidebar weight="duotone" size={20} className="text-black dark:text-white" />
                         </button>
-                        <Star weight="duotone" size={20} className="text-black dark:text-white" />
+                        <motion.button
+                            onClick={() => setIsStarSelected(!isStarSelected)}
+                            whileHover={{
+                                scale: 1.1,
+                                filter: "drop-shadow(0 0 8px rgba(255, 215, 0, 0.6))"
+                            }}
+                            whileTap={{ scale: 0.9 }}
+                            transition={{
+                                duration: 0.25,
+                                ease: [0.25, 0.1, 0.25, 1],
+                                type: "spring",
+                                stiffness: 400,
+                                damping: 25
+                            }}
+                            className="relative p-1 hover:bg-black/5 dark:hover:bg-white/5 rounded transition-colors"
+                            title={isStarSelected ? "Unstar" : "Star"}
+                        >
+                            <motion.div
+                                animate={isStarSelected ? {
+                                    filter: [
+                                        "drop-shadow(0 0 0px rgba(255, 215, 0, 0))",
+                                        "drop-shadow(0 0 6px rgba(255, 215, 0, 0.8))",
+                                        "drop-shadow(0 0 0px rgba(255, 215, 0, 0))"
+                                    ]
+                                } : {
+                                    filter: [
+                                        "drop-shadow(0 0 0px rgba(255, 215, 0, 0))",
+                                        "drop-shadow(0 0 4px rgba(255, 215, 0, 0.3))",
+                                        "drop-shadow(0 0 0px rgba(255, 215, 0, 0))"
+                                    ]
+                                }}
+                                transition={{
+                                    duration: isStarSelected ? 1.5 : 2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                            >
+                                <Star
+                                    weight={isStarSelected ? "fill" : "duotone"}
+                                    size={20}
+                                    className={`transition-colors duration-200 ${isStarSelected
+                                        ? "text-amber-500 dark:text-yellow-400"
+                                        : ""
+                                        }`}
+                                />
+                            </motion.div>
+                        </motion.button>
                     </span>
                     {/* Breadcrumb - hidden on mobile */}
                     <div className="hidden md:flex items-center gap-2">
@@ -70,17 +117,57 @@ export default function Navbar() {
 
                     <span className="flex items-center gap-2 md:gap-4">
                         {/* Theme toggle - always visible */}
-                        <button
+                        <motion.button
                             onClick={toggleTheme}
-                            className="p-1 hover:bg-black/5 dark:hover:bg-white/5 rounded transition-colors"
+                            className="p-1 hover:bg-black/5 dark:hover:bg-white/5 rounded transition-colors relative overflow-hidden"
                             title={theme === 'light' ? "Switch to dark mode" : "Switch to light mode"}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            transition={{ duration: 0.2, ease: "easeInOut" }}
                         >
-                            {theme === 'light' ? (
-                                <Sun weight="duotone" size={20} className="text-black dark:text-white" />
-                            ) : (
-                                <Moon weight="duotone" size={20} className="text-black dark:text-white" />
-                            )}
-                        </button>
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={theme}
+                                    initial={{
+                                        opacity: 0,
+                                        scale: 0.5,
+                                        rotate: theme === 'light' ? -180 : 180
+                                    }}
+                                    animate={{
+                                        opacity: 1,
+                                        scale: 1,
+                                        rotate: 0
+                                    }}
+                                    exit={{
+                                        opacity: 0,
+                                        scale: 0.5,
+                                        rotate: theme === 'light' ? 180 : -180
+                                    }}
+                                    transition={{
+                                        duration: 0.4,
+                                        ease: "easeInOut",
+                                        type: "spring",
+                                        stiffness: 200,
+                                        damping: 20
+                                    }}
+                                    className="flex items-center justify-center"
+                                >
+                                    {theme === 'light' ? (
+                                        <Sun
+                                            weight="duotone"
+                                            size={20}
+                                            className="text-black dark:text-white"
+                                        />
+                                    ) : (
+                                        <Moon
+                                            weight="duotone"
+                                            size={20}
+                                            className="text-black dark:text-white"
+                                        />
+                                    )}
+                                </motion.div>
+                            </AnimatePresence>
+                        </motion.button>
 
                         {/* Other icons - hidden on mobile */}
                         <div className="hidden md:flex items-center gap-4">
@@ -112,10 +199,16 @@ export default function Navbar() {
                     >
                         <motion.div
                             className="w-full max-w-md bg-white dark:bg-gray-900 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700"
-                            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+                            initial={{ opacity: 0, scale: 0.9, y: -30 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                            transition={{ duration: 0.3, ease: "easeOut" }}
+                            exit={{ opacity: 0, scale: 0.9, y: -30 }}
+                            transition={{
+                                duration: 0.3,
+                                ease: [0.25, 0.1, 0.25, 1],
+                                type: "spring",
+                                stiffness: 300,
+                                damping: 25
+                            }}
                         >
                             <div className="flex items-center gap-3 p-4 border-b border-gray-200 dark:border-gray-700">
                                 <MagnifyingGlass size={20} className="text-gray-400 dark:text-gray-500" />
