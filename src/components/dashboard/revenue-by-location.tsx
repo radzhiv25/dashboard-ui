@@ -1,17 +1,5 @@
 import WorldMapSvg from "../../assets/images/world-map.svg";
-
-interface LocationData {
-    name: string;
-    revenue: number;
-    percentage: number;
-}
-
-const locationData: LocationData[] = [
-    { name: "New York", revenue: 72, percentage: 100 },
-    { name: "San Francisco", revenue: 39, percentage: 54 },
-    { name: "Sydney", revenue: 25, percentage: 35 },
-    { name: "Singapore", revenue: 61, percentage: 85 },
-];
+import { locationData } from '../../data/revenue-by-location-data'
 
 export default function RevenueByLocation() {
     return (
