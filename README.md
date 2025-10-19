@@ -191,13 +191,6 @@ The application features a comprehensive theme system with:
 - Follow the existing pattern in `src/components/graph/`
 - Ensure responsive design and theme compatibility
 
-## 📱 Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -206,11 +199,7 @@ The application features a comprehensive theme system with:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [Recharts](https://recharts.org/) for data visualization
 - [Framer Motion](https://www.framer.com/motion/) for animations
