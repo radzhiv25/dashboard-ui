@@ -11,8 +11,8 @@ export default function TotalSalesCard() {
   const total = data.reduce((acc, cur) => acc + cur.value, 0);
 
   return (
-    <div className="bg-[#F9FAFB] p-6 rounded-2xl shadow-sm">
-      <h2 className="text-xl font-semibold text-black mb-4">Total Sales</h2>
+    <div className="bg-[#F9FAFB] dark:bg-white/5 rounded-2xl dark:border-gray-700 p-6 shadow-sm">
+      <h2 className="text-xl font-semibold text-black dark:text-white mb-4">Total Sales</h2>
       <div className="flex flex-col items-center">
         <div className="w-44 h-44 relative">
           <ResponsiveContainer width="100%" height="100%">
@@ -43,7 +43,7 @@ export default function TotalSalesCard() {
           {data.map((item, idx) => (
             <li
               key={idx}
-              className="flex justify-between items-center text-sm text-gray-800"
+              className="flex justify-between items-center text-sm text-black dark:text-white"
             >
               <div className="flex items-center space-x-2">
                 <span
@@ -52,7 +52,7 @@ export default function TotalSalesCard() {
                 ></span>
                 <span>{item.name}</span>
               </div>
-              <span className="text-gray-600">${item.value.toFixed(2)}</span>
+              <span className="text-black dark:text-white">${item.value.toFixed(2)}</span>
             </li>
           ))}
         </ul>

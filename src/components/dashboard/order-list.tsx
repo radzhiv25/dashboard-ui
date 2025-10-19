@@ -152,32 +152,32 @@ export default function OrderList() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white dark:bg-gray-900"
+            className="bg-white dark:bg-black/5"
         >
             {/* Header */}
             <div className=" border-gray-200 dark:border-gray-700">
                 <h2 className="text-sm font-semibold px-4 pb-4 text-gray-900 dark:text-white">Order List</h2>
-                <div className="bg-[#F7F9FB] flex items-center justify-between mb-4 p-2 rounded-lg">
+                <div className="bg-[#F7F9FB] dark:bg-white/5 flex items-center justify-between mb-4 p-2 rounded-lg">
                     <div className="">
                         <div className="flex items-center gap-3">
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="p-2 rounded-lg text-black hover:bg-black/5 transition-colors"
+                                className="p-2 rounded-lg text-black dark:text-white hover:bg-black/5 transition-colors"
                             >
                                 <Plus size={20} />
                             </motion.button>
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="p-2 rounded-lg text-black hover:bg-black/5 transition-colors"
+                                className="p-2 rounded-lg text-black dark:text-white hover:bg-black/5 transition-colors"
                             >
                                 <FunnelSimple size={20} />
                             </motion.button>
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="p-2 rounded-lg text-black hover:bg-black/5 transition-colors"
+                                className="p-2 rounded-lg text-black dark:text-white hover:bg-black/5 transition-colors"
                             >
                                 <SortAscending size={20} />
                             </motion.button>
@@ -195,7 +195,7 @@ export default function OrderList() {
                             placeholder="Search"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-40 pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white/40 dark:bg-gray-800 text-gray-900 dark:text-white placeholder-black/40 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-40 pl-10 pr-4 py-2 border border-gray-300 dark:border-white/20 rounded-lg bg-white/40 dark:bg-black/10 text-gray-900 dark:text-white placeholder-black/40 dark:placeholder-white/20 outline-none"
                         />
                     </div>
                 </div>
@@ -213,44 +213,44 @@ export default function OrderList() {
                                     className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                                 />
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-black/40 dark:text-white/40 uppercase tracking-wider">
                                 Order ID
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-black/40 dark:text-white/40 uppercase tracking-wider">
                                 User
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-black/40 dark:text-white/40 uppercase tracking-wider">
                                 Project
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-black/40 dark:text-white/40 uppercase tracking-wider">
                                 Address
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-black/40 dark:text-white/40 uppercase tracking-wider">
                                 Date
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-black/40 dark:text-white/40 uppercase tracking-wider">
                                 Status
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-black/40 dark:text-white/40 uppercase tracking-wider">
 
                             </th>
                         </tr>
                     </thead>
-                    <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
+                    <tbody className="bg-white dark:bg-black/5 divide-y divide-gray-200 dark:divide-white/20">
                         {currentOrders.map((order, index) => (
                             <motion.tr
                                 key={order.id}
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                                className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                                className="hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer transition-colors"
                             >
                                 <td className="px-6 py-4">
                                     <input
                                         type="checkbox"
                                         checked={order.selected}
                                         onChange={() => handleSelectOrder(order.id)}
-                                        className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                                        className="rounded border-gray-300 text-[#C6C7F8] focus:ring-[#C6C7F8]"
                                     />
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
@@ -313,7 +313,7 @@ export default function OrderList() {
                             whileTap={{ scale: 0.95 }}
                             onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                             disabled={currentPage === 1}
-                            className="size-8 flex items-center justify-center p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            className="size-8 flex items-center justify-center p-2 rounded-lg bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                         >
                             <span className="text-sm">‹</span>
                         </motion.button>
@@ -325,7 +325,7 @@ export default function OrderList() {
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => handlePageChange(page)}
                                 className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${currentPage === page
-                                    ? 'bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white'
+                                    ? 'bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white'
                                     : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
                                     }`}
                             >
@@ -338,7 +338,7 @@ export default function OrderList() {
                             whileTap={{ scale: 0.95 }}
                             onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
                             disabled={currentPage === totalPages}
-                            className="size-8 flex items-center justify-center p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            className="size-8 flex items-center justify-center p-2 rounded-lg bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-white/20 dark:hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                         >
                             <span className="text-sm">›</span>
                         </motion.button>

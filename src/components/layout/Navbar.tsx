@@ -12,7 +12,7 @@ export default function Navbar() {
     const [isSearchOpen, setIsSearchOpen] = useState(false)
     return (
         <>
-            <div className="border-b border-black/10 dark:border-white/10 bg-white dark:bg-black/50 w-full h-16 px-4 md:px-7 py-5 flex items-center justify-between">
+            <div className="border-b border-black/10 dark:border-white/10 bg-white dark:bg-black/10 w-full h-16 px-4 md:px-7 py-5 flex items-center justify-between">
                 {/* Left side - Mobile: only sidebar toggle, Desktop: sidebar + breadcrumb */}
                 <div className="flex items-center gap-4">
                     <span className="flex items-center gap-4">

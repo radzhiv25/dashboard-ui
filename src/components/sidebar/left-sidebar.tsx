@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useSidebar } from '../../hooks/useSidebar'
 import { useDashboard } from '../../context/dashboard-context'
 import { BookOpenIcon, CaretRightIcon, ChartPieIcon, ChatsTeardropIcon, FolderIcon, IdentificationBadgeIcon, IdentificationCardIcon, NotebookIcon, ShoppingBagOpenIcon, UsersThreeIcon, ListBullets } from '@phosphor-icons/react'
+import ProfileIcon from '../../assets/icons/ByeWind.svg'
 
 export default function LeftSidebar() {
     const { leftSidebarCollapsed, isMobile, closeSidebars } = useSidebar()
@@ -33,7 +34,7 @@ export default function LeftSidebar() {
             {/* Mobile overlay backdrop */}
             {isMobile && !leftSidebarCollapsed && (
                 <motion.div
-                    className="fixed inset-0 bg-black/50 z-40"
+                    className="fixed inset-0 bg-black/10 z-40"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -43,7 +44,7 @@ export default function LeftSidebar() {
             )}
 
             <motion.div
-                className={`border-r border-black/10 dark:border-white/10 bg-white dark:bg-black/50 h-screen overflow-hidden ${isMobile ? 'fixed left-0 top-0 z-50' : 'relative'
+                className={`border-r border-black/10 dark:border-white/10 bg-white dark:bg-black/10 h-screen overflow-hidden ${isMobile ? 'fixed left-0 top-0 z-50' : 'relative'
                     }`}
                 animate={{
                     width: leftSidebarCollapsed ? 0 : (isMobile ? window.innerWidth * 0.8 : 208),
@@ -57,37 +58,38 @@ export default function LeftSidebar() {
             >
                 <div className={`h-screen px-4 py-5 text-sm flex flex-col gap-4 ${isMobile ? 'w-3/4' : 'w-52'}`}>
                     {/* Sidebar content will go here */}
-                    <div className="">
-                        <h2 className=" font-semibold text-black dark:text-white mb-4">ByeWind</h2>
+                    <div className="flex items-center gap-2">
+                        <img src={ProfileIcon} alt="Logo" className="size-6" />
+                        <h2 className=" font-semibold text-black dark:text-white">ByeWind</h2>
                     </div>
                     <div className="flex flex-col gap-4">
                         <div className='flex items-center gap-1 text-sm'>
-                            <p className="text-black/50 dark:text-white/50 font-medium">Favorites</p>
-                            <p className="text-black/50 dark:text-white/50">Recently</p>
+                            <p className="text-black/50 dark:text-white/40 px-2 py-1">Favorites</p>
+                            <p className="text-black/50 dark:text-white/20">Recently</p>
                         </div>
                         <div className="flex flex-col gap-1">
                             <motion.p
-                                className="py-1 px-2 text-black/70 dark:text-white/70 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 rounded transition-all duration-200"
+                                className="py-1 px-2 text-black/70 dark:text-white cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 rounded transition-all duration-200"
                                 whileHover={{ scale: 1.02, x: 4 }}
                                 whileTap={{ scale: 0.98 }}
                             >
                                 Overview
                             </motion.p>
                             <motion.p
-                                className="py-1 px-2 text-black/70 dark:text-white/70 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 rounded transition-all duration-200"
+                                className="py-1 px-2 text-black/70 dark:text-white cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 rounded transition-all duration-200"
                                 whileHover={{ scale: 1.02, x: 4 }}
                                 whileTap={{ scale: 0.98 }}
                             >
                                 Projects
                             </motion.p>
                         </div>
-                        <div className='flex flex-col gap-1 pb-3'>
-                            <h3 className="text-black/50 dark:text-white/50 text-sm font-medium">Dashboards</h3>
+                        <div className='flex flex-col gap-2 pb-3'>
+                            <h3 className="text-black/50 dark:text-white/50 text-sm font-medium px-2">Dashboards</h3>
 
                             {/* Default Dashboard - Selected State */}
                             <motion.div
                                 className={`flex items-center gap-1 rounded-lg py-1 pr-2 cursor-pointer transition-all duration-200 ${selectedDashboard === 'Default'
-                                    ? 'bg-black/5'
+                                    ? 'bg-black/5 dark:bg-white/5'
                                     : 'hover:bg-black/5 dark:hover:bg-white/5'
                                     }`}
                                 onClick={() => setSelectedDashboard('Default')}
@@ -95,7 +97,7 @@ export default function LeftSidebar() {
                                 whileTap={{ scale: 0.98 }}
                             >
                                 <motion.div
-                                    className={`border-l-2 border-black w-6 h-3 rounded-r-full ${selectedDashboard === 'Default'
+                                    className={`border-l-2 border-[#C6C7F8] w-6 h-3 rounded-r-full ${selectedDashboard === 'Default'
                                         ? 'opacity-100'
                                         : 'opacity-0'
                                         }`}
@@ -104,7 +106,7 @@ export default function LeftSidebar() {
                                     }}
                                     transition={{ duration: 0.2 }}
                                 />
-                                <div className='flex items-center gap-1'>
+                                <div className='flex items-center gap-1 text-black dark:text-white'>
                                     <ChartPieIcon weight="duotone" size={20} />
                                     <p>Default</p>
                                 </div>
@@ -113,7 +115,7 @@ export default function LeftSidebar() {
                             {/* Order List Dashboard */}
                             <motion.div
                                 className={`flex items-center gap-1 rounded-lg py-1 pr-2 cursor-pointer transition-all duration-200 ${selectedDashboard === 'Order List'
-                                    ? 'bg-black/5'
+                                    ? 'bg-black/5 dark:bg-white/5'
                                     : 'hover:bg-black/5 dark:hover:bg-white/5'
                                     }`}
                                 onClick={() => setSelectedDashboard('Order List')}
@@ -121,7 +123,7 @@ export default function LeftSidebar() {
                                 whileTap={{ scale: 0.98 }}
                             >
                                 <motion.div
-                                    className={`border-l-2 border-black w-6 h-3 rounded-r-full ${selectedDashboard === 'Order List'
+                                    className={`border-l-2 border-[#C6C7F8] w-6 h-3 rounded-r-full ${selectedDashboard === 'Order List'
                                         ? 'opacity-100'
                                         : 'opacity-0'
                                         }`}
@@ -130,7 +132,7 @@ export default function LeftSidebar() {
                                     }}
                                     transition={{ duration: 0.2 }}
                                 />
-                                <div className='flex items-center gap-1'>
+                                <div className='flex items-center gap-1 text-black dark:text-white'>
                                     <ListBullets weight="duotone" size={20} />
                                     <p>Order List</p>
                                 </div>
@@ -149,8 +151,8 @@ export default function LeftSidebar() {
                                 >
                                     <CaretRightIcon size={16} className="text-black/50 dark:text-white/50" />
                                 </motion.div>
-                                <ShoppingBagOpenIcon weight="duotone" size={20} className="text-black/60 dark:text-white/60" />
-                                <span className="text-black/70 dark:text-white/70">eCommerce</span>
+                                <ShoppingBagOpenIcon weight="duotone" size={20} className="text-black/60 dark:text-white" />
+                                <span className="text-black/70 dark:text-white">eCommerce</span>
                             </motion.div>
 
                             {/* Projects */}
@@ -166,8 +168,8 @@ export default function LeftSidebar() {
                                 >
                                     <CaretRightIcon size={16} className="text-black/50 dark:text-white/50" />
                                 </motion.div>
-                                <FolderIcon weight="duotone" size={20} className="text-black/60 dark:text-white/60" />
-                                <span className="text-black/70 dark:text-white/70">Projects</span>
+                                <FolderIcon weight="duotone" size={20} className="text-black/60 dark:text-white" />
+                                <span className="text-black/70 dark:text-white">Projects</span>
                             </motion.div>
 
                             {/* Online Courses */}
@@ -183,12 +185,12 @@ export default function LeftSidebar() {
                                 >
                                     <CaretRightIcon size={16} className="text-black/50 dark:text-white/50" />
                                 </motion.div>
-                                <BookOpenIcon weight="duotone" size={20} className="text-black/60 dark:text-white/60" />
-                                <span className="text-black/70 dark:text-white/70">Online Courses</span>
+                                <BookOpenIcon weight="duotone" size={20} className="text-black/60 dark:text-white" />
+                                <span className="text-black/70 dark:text-white">Online Courses</span>
                             </motion.div>
                         </div>
                         <div className='flex flex-col gap-1 pb-3'>
-                            <h3 className="text-black/50 dark:text-white/50 text-sm font-medium">Pages</h3>
+                            <h3 className="text-black/50 dark:text-white/50 text-sm font-medium px-2">Pages</h3>
 
                             {/* User Profile - Expandable */}
                             <div className="flex flex-col gap-1">
@@ -204,8 +206,8 @@ export default function LeftSidebar() {
                                     >
                                         <CaretRightIcon size={16} className="text-black/50 dark:text-white/50" />
                                     </motion.div>
-                                    <IdentificationBadgeIcon weight="duotone" size={20} className="text-black/60 dark:text-white/60" />
-                                    <span className="text-black/70 dark:text-white/70">User Profile</span>
+                                    <IdentificationBadgeIcon weight="duotone" size={20} className="text-black/60 dark:text-white" />
+                                    <span className="text-black/70 dark:text-white">User Profile</span>
                                 </motion.div>
 
                                 <AnimatePresence>
@@ -220,7 +222,7 @@ export default function LeftSidebar() {
                                             {['Overview', 'Projects', 'Campaigns', 'Documents', 'Followers'].map((item, index) => (
                                                 <motion.p
                                                     key={item}
-                                                    className="py-1 px-2 text-black/60 dark:text-white/60 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 rounded transition-all duration-200"
+                                                    className="py-1 px-2 text-black/60 dark:text-white cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 rounded transition-all duration-200"
                                                     initial={{ opacity: 0, x: -10 }}
                                                     animate={{ opacity: 1, x: 0 }}
                                                     transition={{ duration: 0.2, delay: index * 0.05 }}
@@ -247,8 +249,8 @@ export default function LeftSidebar() {
                                 >
                                     <CaretRightIcon size={16} className="text-black/50 dark:text-white/50" />
                                 </motion.div>
-                                <IdentificationCardIcon weight="duotone" size={20} className="text-black/60 dark:text-white/60" />
-                                <span className="text-black/70 dark:text-white/70">Account</span>
+                                <IdentificationCardIcon weight="duotone" size={20} className="text-black/60 dark:text-white" />
+                                <span className="text-black/70 dark:text-white">Account</span>
                             </motion.div>
 
                             {/* Corporate */}
@@ -264,8 +266,8 @@ export default function LeftSidebar() {
                                 >
                                     <CaretRightIcon size={16} className="text-black/50 dark:text-white/50" />
                                 </motion.div>
-                                <UsersThreeIcon weight="duotone" size={20} className="text-black/60 dark:text-white/60" />
-                                <span className="text-black/70 dark:text-white/70">Corporate</span>
+                                <UsersThreeIcon weight="duotone" size={20} className="text-black/60 dark:text-white" />
+                                <span className="text-black/70 dark:text-white">Corporate</span>
                             </motion.div>
 
                             {/* Blog */}
@@ -281,8 +283,8 @@ export default function LeftSidebar() {
                                 >
                                     <CaretRightIcon size={16} className="text-black/50 dark:text-white/50" />
                                 </motion.div>
-                                <NotebookIcon weight="duotone" size={20} className="text-black/60 dark:text-white/60" />
-                                <span className="text-black/70 dark:text-white/70">Blog</span>
+                                <NotebookIcon weight="duotone" size={20} className="text-black/60 dark:text-white" />
+                                <span className="text-black/70 dark:text-white">Blog</span>
                             </motion.div>
 
                             {/* Social */}
@@ -298,8 +300,8 @@ export default function LeftSidebar() {
                                 >
                                     <CaretRightIcon size={16} className="text-black/50 dark:text-white/50" />
                                 </motion.div>
-                                <ChatsTeardropIcon weight="duotone" size={20} className="text-black/60 dark:text-white/60" />
-                                <span className="text-black/70 dark:text-white/70">Social</span>
+                                <ChatsTeardropIcon weight="duotone" size={20} className="text-black/60 dark:text-white" />
+                                <span className="text-black/70 dark:text-white">Social</span>
                             </motion.div>
                         </div>
                     </div>

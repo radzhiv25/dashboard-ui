@@ -2,6 +2,17 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useSidebar } from '../../hooks/useSidebar'
 import { Bug, User, Broadcast } from '@phosphor-icons/react'
 import { useState, useEffect } from 'react'
+import Male07Icon from '../../assets/icons/Male07.svg'
+import Female05Icon from '../../assets/icons/Female05.svg'
+import Male11Icon from '../../assets/icons/Male11.svg'
+import ThreeD05Icon from '../../assets/icons/3D05.svg'
+import ThreeD08Icon from '../../assets/icons/3D08.svg'
+import ThreeD03Icon from '../../assets/icons/3D03.svg'
+import Male08Icon from '../../assets/icons/Male08.svg'
+import Male06Icon from '../../assets/icons/Male06.svg'
+import Female08Icon from '../../assets/icons/Female08.svg'
+import Female09Icon from '../../assets/icons/Female09.svg'
+import Female15Icon from '../../assets/icons/Female15.svg'
 
 export default function RightSidebar() {
     const { rightSidebarCollapsed, isMobile, closeSidebars } = useSidebar()
@@ -20,7 +31,7 @@ export default function RightSidebar() {
         {
             avatar: {
                 bg: "bg-blue-100",
-                text: "👨",
+                icon: ThreeD05Icon,
                 name: "John Doe",
                 description: "You have a bug that needs..."
             },
@@ -29,7 +40,7 @@ export default function RightSidebar() {
         {
             avatar: {
                 bg: "bg-green-100",
-                text: "👩",
+                icon: Female05Icon,
                 name: "Sarah Wilson",
                 description: "Released a new version"
             },
@@ -38,7 +49,7 @@ export default function RightSidebar() {
         {
             avatar: {
                 bg: "bg-purple-100",
-                text: "👩",
+                icon: ThreeD08Icon,
                 name: "Aisha Ahmed",
                 description: "Submitted a bug"
             },
@@ -47,7 +58,7 @@ export default function RightSidebar() {
         {
             avatar: {
                 bg: "bg-orange-100",
-                text: "👨",
+                icon: Male07Icon,
                 name: "Marcus Johnson",
                 description: "Modified A data in Page X"
             },
@@ -56,7 +67,7 @@ export default function RightSidebar() {
         {
             avatar: {
                 bg: "bg-gray-100",
-                text: "👨",
+                icon: Male11Icon,
                 name: "Alex Chen",
                 description: "Deleted a page in Project X"
             },
@@ -68,32 +79,32 @@ export default function RightSidebar() {
     const contacts = [
         {
             name: "Natali Craig",
-            avatar: "👩",
+            avatar: Female15Icon,
             bg: "bg-gray-100"
         },
         {
             name: "Drew Cano",
-            avatar: "👨",
+            avatar: Male08Icon,
             bg: "bg-red-100"
         },
         {
             name: "Orlando Diggs",
-            avatar: "👨",
+            avatar: Male06Icon,
             bg: "bg-yellow-100"
         },
         {
             name: "Andi Lane",
-            avatar: "👩",
+            avatar: Female08Icon,
             bg: "bg-blue-100"
         },
         {
             name: "Kate Morrison",
-            avatar: "👩",
+            avatar: Female09Icon,
             bg: "bg-green-100"
         },
         {
             name: "Koray Okumus",
-            avatar: "👨",
+            avatar: ThreeD03Icon,
             bg: "bg-purple-100"
         }
     ]
@@ -174,7 +185,7 @@ export default function RightSidebar() {
             {/* Mobile overlay backdrop */}
             {isMobile && !rightSidebarCollapsed && (
                 <motion.div
-                    className="fixed inset-0 bg-black/50 z-40"
+                    className="fixed inset-0 bg-black/10 z-40"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -184,7 +195,7 @@ export default function RightSidebar() {
             )}
 
             <motion.div
-                className={`border-l border-black/10 dark:border-white/10 bg-white dark:bg-black/90 ${isMobile ? 'fixed right-0 top-0 z-50 h-screen' : 'relative h-full'
+                className={`border-l border-black/10 dark:border-white/10 bg-white dark:bg-black/10 ${isMobile ? 'fixed right-0 top-0 z-50 h-screen' : 'relative h-full'
                     }`}
                 initial={{
                     width: rightSidebarCollapsed ? 0 : (isMobile ? window.innerWidth * 0.8 : 288),
@@ -233,11 +244,12 @@ export default function RightSidebar() {
                                                 transition={{ duration: 0.4, ease: "easeOut" }}
                                             >
                                                 <motion.div
-                                                    className="flex-shrink-0 w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-md flex items-center justify-center"
+                                                    className="flex-shrink-0 size-6 rounded-md flex items-center justify-center"
+                                                    style={{ backgroundColor: index % 2 === 0 ? '#E3F5FF' : '#E5ECF6' }}
                                                     variants={iconVariants}
                                                     transition={{ duration: 0.5, ease: "backOut" }}
                                                 >
-                                                    <notification.icon size={16} className="text-blue-600 dark:text-blue-400" />
+                                                    <notification.icon size={16} className="text-black" />
                                                 </motion.div>
                                                 <div className="flex-1 min-w-0">
                                                     <motion.p
@@ -268,7 +280,7 @@ export default function RightSidebar() {
                                     transition={{ duration: 0.5, ease: "easeOut" }}
                                 >
                                     <motion.h3
-                                        className="text0sm font-bold text-black dark:text-white mb-6"
+                                        className="text-sm font-bold text-black dark:text-white mb-6"
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ duration: 0.5, delay: 0.4 }}
@@ -289,7 +301,7 @@ export default function RightSidebar() {
                                                     {/* Avatar with timeline connector */}
                                                     <div className="flex-shrink-0 relative z-10">
                                                         <motion.div
-                                                            className={`w-8 h-8 ${activity.avatar.bg} dark:bg-gray-700 rounded-full flex items-center justify-center text-sm font-medium shadow-sm border-2 border-white dark:border-gray-800 relative`}
+                                                            className=""
                                                             initial={{ scale: 0, rotate: -180 }}
                                                             animate={{ scale: 1, rotate: 0 }}
                                                             transition={{
@@ -302,7 +314,11 @@ export default function RightSidebar() {
                                                                 transition: { duration: 0.2 }
                                                             }}
                                                         >
-                                                            {activity.avatar.text}
+                                                            <img
+                                                                src={activity.avatar.icon}
+                                                                alt={activity.avatar.name}
+                                                                className="size-6"
+                                                            />
                                                         </motion.div>
                                                         {/* Timeline connector line with gap - only show if not the last item */}
                                                         {index < activities.length - 1 && (
@@ -320,7 +336,7 @@ export default function RightSidebar() {
                                                     </div>
 
                                                     {/* Content */}
-                                                    <div className="flex-1 min-w-0 pt-1">
+                                                    <div className="flex-1 min-w-0">
                                                         <motion.p
                                                             className="text-sm text-gray-900 dark:text-white font-medium leading-relaxed"
                                                             initial={{ opacity: 0, x: 10 }}
@@ -330,7 +346,7 @@ export default function RightSidebar() {
                                                             {activity.avatar.description}
                                                         </motion.p>
                                                         <motion.p
-                                                            className="text-xs text-gray-500 dark:text-gray-400 mt-1"
+                                                            className="text-xs text-gray-500 dark:text-gray-400"
                                                             initial={{ opacity: 0, x: 10 }}
                                                             animate={{ opacity: 1, x: 0 }}
                                                             transition={{ delay: 0.9 + index * 0.1 }}
@@ -368,7 +384,7 @@ export default function RightSidebar() {
                                                 transition={{ duration: 0.4, ease: "easeOut" }}
                                             >
                                                 <motion.div
-                                                    className={`w-10 h-10 ${contact.bg} dark:bg-gray-700 rounded-full flex items-center justify-center text-sm font-medium shadow-sm border-2 border-white dark:border-gray-800`}
+                                                    className={`size-6 ${contact.bg} dark:bg-gray-700 rounded-full flex items-center justify-center text-sm font-medium shadow-sm border-2 border-white dark:border-gray-800`}
                                                     initial={{ scale: 0, rotate: -180 }}
                                                     animate={{ scale: 1, rotate: 0 }}
                                                     transition={{
@@ -381,7 +397,11 @@ export default function RightSidebar() {
                                                         transition: { duration: 0.2 }
                                                     }}
                                                 >
-                                                    {contact.avatar}
+                                                    <img
+                                                        src={contact.avatar}
+                                                        alt={contact.name}
+                                                        className="size-6"
+                                                    />
                                                 </motion.div>
                                                 <motion.p
                                                     className="text-sm text-gray-900 dark:text-white font-medium"
